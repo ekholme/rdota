@@ -1,0 +1,18 @@
+---
+output: rmarkdown::github_document
+---
+
+# `rdota`
+
+This is the Github repo for the `rdota` package. 
+
+TODO 
+
+## Installation
+
+You can install `rdota` using:
+
+```{r install-msg, eval = FALSE}
+remotes::install_github("ekholme/rdota")
+```
+
