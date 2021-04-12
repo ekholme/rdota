@@ -1,12 +1,11 @@
 ---
-output: rmarkdown::github_document
+title: "rdota"
+output: github_document
 ---
 
-# `rdota`
+This is the Github repo for the `rdota` package.
 
-This is the Github repo for the `rdota` package. 
-
-TODO 
+TODO
 
 ## Installation
 

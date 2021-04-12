@@ -1,5 +1,5 @@
-
-# `rdota`
+rdota
+================
 
 This is the Github repo for the `rdota` package.
 
