@@ -38,3 +38,68 @@
 #' 
 #' @source \url{https://docs.opendota.com/#tag/constants}
 "heroes"
+
+
+#' Abilities
+#' 
+#' Hero abilities in Dota 2
+#' 
+#' @format A tibble with 2 variables:
+#' \describe{
+#'   \item{name}{Ability name}
+#'   \item{attribs}{Ability attributes, formatted as a nested list}
+#' }
+#' 
+#' @source \url{https://docs.opendota.com/#tag/constants}
+"abilities"
+
+#' Items
+#' 
+#' Available items in Dota 2
+#' 
+#' @format A tibble with 14 variables:
+#' \describe{
+#'   \item{hint}{Text hint(s) displayed on item tooltip}
+#'   \item{id}{Item id number}
+#'   \item{img}{Item image url. Prefix with media.steampowered.com}
+#'   \item{dname}{Item name}
+#'   \item{qual}{Item quality}
+#'   \item{cost}{Item cost, in gold}
+#'   \item{notes}{Additional item notes}
+#'   \item{attrib}{Item attributes, as a nested list}
+#'   \item{mc}{Mana cost to use item}
+#'   \item{cd}{Item cooldown, in seconds}
+#'   \item{lore}{Item lore}
+#'   \item{components}{Components used to create item, if applicable}
+#'   \item{created}{Logical. Is the item created from other items?}
+#'   \item{charges}{Number of item charges available up on purchase/creation, if applicable}
+#' }
+#' 
+#' @source \url{https://docs.opendota.com/#tag/constants}
+"items"
+
+#' Ability Ids
+#' 
+#' Mapping of ability names to ids
+#' 
+#' @format A tibble with 2 variables:
+#' \describe{
+#'   \item{ability_id}{Ability id number}
+#'   \item{ability_name}{Ability name}
+#' }
+#' 
+#' @source \url{https://docs.opendota.com/#tag/constants}
+"ability_ids"
+
+#' Item Ids
+#' 
+#' Mapping of item names to ids
+#' 
+#' @format A tibble with 2 variables:
+#' \describe{
+#'   \item{item_id}{Item id number}
+#'   \item{item_name}{Item name}
+#' }
+#' 
+#' @source \url{https://docs.opendota.com/#tag/constants}
+"item_ids"
