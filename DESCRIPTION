@@ -6,7 +6,8 @@ Authors@R:
            family = "Ekholm",
            role = c("aut", "cre"),
            email = "eric.ekholm@gmail.com")
-Description: What the package does (one paragraph).
+Description: rdota provides a set of functions to get and process data from the OpenDota API.
+The package follows tidy data principles to the extent possible to make working with the data easier in R.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -19,6 +20,10 @@ Imports:
   magrittr,
   jsonlite,
   tibble
+Suggests:
+  xml2,
+  rvest,
+  stringr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 
