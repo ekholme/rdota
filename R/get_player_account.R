@@ -1,6 +1,6 @@
 #' Get Player Account Information
 #'
-#' @param player_id Steam32 player id to get info for
+#' @param player_id Steam32 account id
 #'
 #' @return
 #' @export
@@ -11,9 +11,7 @@
 get_player_account_info <- function(player_id) {
   
   #check if player_id is too long & likely the 64-bit id
-  if (nchar(player_id) > 11) {
-    rlang::abort(paste0("The `player_id` you've passed in has too many (", nchar(player_id), ") digits. Please be sure to use the Steam32 ID rather than the 64-bit ID"))
-  }
+  check_player_id_len(player_id)
   
   url <- 'https://api.opendota.com/api/players/'
   

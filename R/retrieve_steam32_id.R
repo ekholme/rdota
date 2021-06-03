@@ -21,7 +21,6 @@ retrieve_steam32_id <- function(long_id) {
   site <- xml2::read_html(paste0(idfinder, long_id))
   
   out <- rvest::html_elements(site, "div")
-  #note it's the 16th element of this list that we want
   
   txt <- rvest::html_text(out[[15]])
   
