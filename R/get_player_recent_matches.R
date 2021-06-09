@@ -20,14 +20,17 @@ get_player_recent_matches <- function(player_id, as_tibble = TRUE) {
     rlang::abort(paste0("`as_tibble` must be logical, not ", typeof(as_tibble)))
   }
   
-  id <- if (is.numeric(player_id)) as.character(player_id)
-  
-  req_url <- req_url <- sprintf('https://api.opendota.com/api/players/%s/recentMatches/', player_id)
+  req_url <- sprintf('https://api.opendota.com/api/players/%s/recentMatches/', player_id)
   
   resp <- httr::GET(req_url)
   
   #checking for status errors
   httr::stop_for_status(resp)
+  
+  #ensure query returns json
+  if (httr::http_type(resp) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
   
   content <- httr::content(resp, as = "parsed", type = "application/json")
   

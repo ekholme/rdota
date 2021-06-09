@@ -4,7 +4,7 @@ compare_lens <- function(vec, size = 1) {
   all(purrr::map_lgl(vec, ~length(unlist(.x)) == size))
 }
 
-
+#useful for simplifying a list into a vector in cases where it's appropriate
 cond_unlist <- function(vec) {
   if (compare_lens(vec) == TRUE) {
     unlist(vec)
@@ -40,4 +40,23 @@ check_player_id_len <- function(player_id) {
 #remove NULLs from list and make tibble
 compact_to_tibble <- function(x) {
   tibble::as_tibble(purrr::compact(x))
+}
+
+#replace nulls in a list
+replace_null <- function(x, replacement = NA_character_) {
+  
+  if (is.null(x)) replacement else x
+  
+}
+
+#coerce match list to tibble
+coerce_match <- function(lst, ...) {
+  
+  tmp <- purrr::modify_depth(lst, 1, replace_null)
+  
+  ret <- tidyr::pivot_wider(tibble::enframe(tmp),
+                           names_from = name,
+                           values_from = value)
+  
+  
 }
