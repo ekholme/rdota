@@ -1,4 +1,17 @@
 
+#' Get Match Data
+#' 
+#' This function queries data for a given match. It will likely be split into other functions that return more specific information
+#'
+#' @param match_id Match ID to query
+#' @param as_tibble logical. If TRUE, will return as a 1-row tibble with some list-cols. Otherwise, will return as a nested list.
+#'
+#' @return
+#' @export
+#'
+#' @examples \dontrun{
+#' get_match('6019587919')
+#' }
 get_match <- function(match_id, as_tibble = TRUE) {
   
   req_url <- sprintf('https://api.opendota.com/api/matches/%s/', match_id)

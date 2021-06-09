@@ -18,7 +18,9 @@ Imports:
   dplyr,
   magrittr,
   jsonlite,
-  tibble
+  tibble,
+  rlang,
+  tidyr
 Suggests:
   xml2,
   rvest,
