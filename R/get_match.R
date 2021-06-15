@@ -1,10 +1,9 @@
 
 #' Get Match Data
 #' 
-#' This function queries data for a given match. It will likely be split into other functions that return more specific information
+#' This function queries data for a given match. You can use it in conjunction with several pull_*() helpers to get and tidy match data
 #'
 #' @param match_id Match ID to query
-#' @param as_tibble logical. If TRUE, will return as a 1-row tibble with some list-cols. Otherwise, will return as a nested list.
 #'
 #' @return
 #' @export
@@ -12,7 +11,7 @@
 #' @examples \dontrun{
 #' get_match('6019587919')
 #' }
-get_match <- function(match_id, as_tibble = TRUE) {
+get_match <- function(match_id) {
   
   req_url <- sprintf('https://api.opendota.com/api/matches/%s/', match_id)
   
@@ -28,12 +27,14 @@ get_match <- function(match_id, as_tibble = TRUE) {
   
   content <- httr::content(resp, as = "parsed", type = "application/json")
   
-  content <- if (as_tibble == TRUE) {
-    tmp <- coerce_match(content)
-    
-    purrr::modify(tmp, cond_unlist)
-    
-  } else content
+  structure(
+    list(
+      content = content,
+      url = req_url,
+      resp = resp
+    ),
+    class = "rdota_match"
+  )
   
 }
 

@@ -38,7 +38,7 @@ get_player_recent_matches <- function(player_id, as_tibble = TRUE) {
   content <- if (as_tibble == TRUE) {
     purrr::map_dfr(content, compact_to_tibble)
   } else content
-  
+
   return(content)
 }
 

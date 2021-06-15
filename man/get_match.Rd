@@ -4,18 +4,16 @@
 \alias{get_match}
 \title{Get Match Data}
 \usage{
-get_match(match_id, as_tibble = TRUE)
+get_match(match_id)
 }
 \arguments{
 \item{match_id}{Match ID to query}
-
-\item{as_tibble}{logical. If TRUE, will return as a 1-row tibble with some list-cols. Otherwise, will return as a nested list.}
 }
 \value{
 
 }
 \description{
-This function queries data for a given match. It will likely be split into other functions that return more specific information
+This function queries data for a given match. You can use it in conjunction with several pull_*() helpers to get and tidy match data
 }
 \examples{
 \dontrun{

@@ -49,14 +49,4 @@ replace_null <- function(x, replacement = NA_character_) {
   
 }
 
-#coerce match list to tibble
-coerce_match <- function(lst, ...) {
-  
-  tmp <- purrr::modify_depth(lst, 1, replace_null)
-  
-  ret <- tidyr::pivot_wider(tibble::enframe(tmp),
-                           names_from = name,
-                           values_from = value)
-  
-  
-}
+
