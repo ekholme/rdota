@@ -2,7 +2,7 @@
 #' Get Player's Recent Matches
 #'
 #' @param player_id Steam32 account id
-#' @param as_tibble logical. If TRUE, will return the result as a tibble where each row is a match. If false, will return as a nested list.
+#' @param as_tibble logical. If TRUE, will return the result as a tibble where each row is a match. If false, as an 'rdota' object with the .
 #'
 #' @return
 #' @export
@@ -22,24 +22,13 @@ get_player_recent_matches <- function(player_id, as_tibble = TRUE) {
   
   req_url <- sprintf('https://api.opendota.com/api/players/%s/recentMatches/', player_id)
   
-  resp <- httr::GET(req_url)
+  out <- get_response(url = req_url)
   
-  #checking for status errors
-  httr::stop_for_status(resp)
-  
-  #ensure query returns json
-  if (httr::http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-  
-  content <- httr::content(resp, as = "parsed", type = "application/json")
-  
-  #return content as requested
-  content <- if (as_tibble == TRUE) {
-    purrr::map_dfr(content, compact_to_tibble)
-  } else content
+  #return the data compacted as a tibble if requested; otherwise return as an 'rdota' object
+  if (as_tibble == TRUE) {
+    purrr::map_dfr(tt$content, compact_to_tibble)
+  } else out
 
-  return(content)
 }
 
 

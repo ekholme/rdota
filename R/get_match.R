@@ -15,26 +15,13 @@ get_match <- function(match_id) {
   
   req_url <- sprintf('https://api.opendota.com/api/matches/%s/', match_id)
   
-  resp <- httr::GET(req_url)
+  out <- get_response(url = req_url)
   
-  #checking for status errors
-  httr::stop_for_status(resp)
+  #append the 'rdota_match' class to the object
+  class(out) <- append(class(out), "rdota_match")
   
-  #ensure query returns json
-  if (httr::http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
+  return(out)
   
-  content <- httr::content(resp, as = "parsed", type = "application/json")
-  
-  structure(
-    list(
-      content = content,
-      url = req_url,
-      resp = resp
-    ),
-    class = "rdota_match"
-  )
   
 }
 
