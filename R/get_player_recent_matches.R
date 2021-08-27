@@ -26,7 +26,7 @@ get_player_recent_matches <- function(player_id, as_tibble = TRUE) {
   
   #return the data compacted as a tibble if requested; otherwise return as an 'rdota' object
   if (as_tibble == TRUE) {
-    purrr::map_dfr(tt$content, compact_to_tibble)
+    purrr::map_dfr(out$content, compact_to_tibble)
   } else out
 
 }

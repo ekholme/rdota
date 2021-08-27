@@ -1,7 +1,7 @@
 
 #' Tidy an rdota_match object
 #' 
-#' Take an rdota_match object -- the result of get_match() -- and turn it into a tibble. Some columns will still contain (deeply) nested lists. Please see other pull_*() helper functions to tidy data in these columns
+#' Take an rdota_match object -- the result of get_match() -- and turn it into a tibble. Some columns will still contain (deeply) nested lists. Please see pull_*() helper functions to extract data from these columns
 #'
 #' @param match_obj An rdota_match object.
 #'
@@ -9,13 +9,13 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' a <- rdota::get_match('6019587919')
+#' a <- get_match('6019587919')
 #' tidy_rdota_match(a)
 #' }
 tidy_rdota_match <- function(match_obj) {
   
   #check class of match_obj
-  if (class(match_obj) != "rdota_match") {
+  if (!"rdota_match" %in% class(match_obj)) {
     rlang::abort(paste0("`tidy_match` expects an object of class 'rdota_match', not ", class(match_obj)))
   }
   
@@ -28,6 +28,8 @@ tidy_rdota_match <- function(match_obj) {
                             values_from = value)
   
   ret <- purrr::modify(ret, cond_unlist)
+  
+  class(ret) <- append(class(ret), "match_tbl")
   
   return(ret)
   
