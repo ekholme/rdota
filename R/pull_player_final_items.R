@@ -26,14 +26,17 @@ get_indiv_player_items <- function(obj, player_num) {
 }
 
 
-#' TODO
+#' Pull Player Final Items
 #'
-#' @param obj 
+#' @param obj An 'rdota_match' or 'match_tbl' object.
 #'
 #' @return
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' a <- get_match('6156757097')
+#' b <- pull_player_final_items(a)
+#' }
 pull_player_final_items <- function(obj) {
   
   cl <- class(obj)
