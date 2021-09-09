@@ -1,6 +1,6 @@
 
 
-
+#core function inside of pull_player_final_items
 get_indiv_player_items <- function(obj, player_num) {
 
   ind <- c(paste0("item_", 0:5), "item_neutral", paste0("backpack_", 0:3))
@@ -27,10 +27,12 @@ get_indiv_player_items <- function(obj, player_num) {
 
 
 #' Pull Player Final Items
+#' 
+#' @description Pull the final items of all players in the match.
 #'
 #' @param obj An 'rdota_match' or 'match_tbl' object.
 #'
-#' @return
+#' @return A tibble with 110 rows and 5 columns.
 #' @export
 #'
 #' @examples \dontrun{
