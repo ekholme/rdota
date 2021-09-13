@@ -9,7 +9,7 @@ get_player_recent_matches(player_id, as_tibble = TRUE)
 \arguments{
 \item{player_id}{Steam32 account id}
 
-\item{as_tibble}{logical. If TRUE, will return the result as a tibble where each row is a match. If false, will return as a nested list.}
+\item{as_tibble}{logical. If TRUE, will return the result as a tibble where each row is a match. If false, as an 'rdota' object with the .}
 }
 \value{
 

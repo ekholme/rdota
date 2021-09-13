@@ -1,7 +1,4 @@
 
-# library(tidyverse)
-# 
-# keys <- c("kills", "deaths", "assists")
 
 get_indiv_player_kda <- function(obj, player_num) {
   
@@ -29,6 +26,19 @@ get_indiv_player_kda <- function(obj, player_num) {
   tidyr::pivot_wider(tmp, names_from = key, values_from = val)
 }
 
+#' Pull Player KDA
+#' 
+#' @description Pull the final kills-deaths-assists (KDA) scores for all players in a match.
+#'
+#' @param obj An 'rdota_match' or 'match_tbl' object.
+#'
+#' @return
+#' @export
+#'
+#' @examples \dontrun{
+#' a <- get_match('6156757097')
+#' b <- pull_player_kda(a)
+#' }
 pull_player_kda <- function(obj) {
   
   cl <- class(obj)

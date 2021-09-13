@@ -13,11 +13,11 @@ tidy_rdota_match(match_obj)
 
 }
 \description{
-Take an rdota_match object -- the result of get_match() -- and turn it into a tibble. Some columns will still contain (deeply) nested lists. Please see other pull_*() helper functions to tidy data in these columns
+Take an rdota_match object -- the result of get_match() -- and turn it into a tibble. Some columns will still contain (deeply) nested lists. Please see pull_*() helper functions to extract data from these columns
 }
 \examples{
 \dontrun{
-a <- rdota::get_match('6019587919')
+a <- get_match('6019587919')
 tidy_rdota_match(a)
 }
 }
