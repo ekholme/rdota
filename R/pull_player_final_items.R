@@ -35,18 +35,10 @@ get_indiv_player_items <- function(obj, player_num) {
 #' }
 pull_player_final_items <- function(obj) {
   
-  cl <- class(obj)
-  
-  if (!((!"rdota_match" %in% cl) | (!"match_tbl" %in% cl))) {
-    rlang::abort(paste0("`pull_player_final_items` expects an object of class 'rdota_match' or 'match_tbl', not ", class(obj)))
-  }
-  
-  obj <- if ("rdota_match" %in% class(obj) & (!"match_tbl" %in% class(obj))) {
-    tidy_rdota_match(obj)
-  } else obj
+  obj <- check_rdota_match(obj)
 
   t <- purrr::map(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
-  
+
   dplyr::bind_rows(t)
 
 }

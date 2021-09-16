@@ -1,7 +1,7 @@
 
 #' Heroes
 #' 
-#' Information on playable heroes in Dota 2.
+#' @description Information on playable heroes in Dota 2.
 #' 
 #' @format A tibble with 29 variables:
 #' \describe{
@@ -29,7 +29,7 @@
 #' \item{int_gain}{Intelligence gained per level}
 #' \item{attack_range}{Hero attack range}
 #' \item{projectile_speed}{Travel speed of the hero attack projectile}
-#' \item{attack_rate}{Base time between hero attacks
+#' \item{attack_rate}{Base time between hero attacks}
 #' \item{move_speed}{Base hero movement speed}
 #' \item{turn_rate}{Base speed at which hero turns in place}
 #' \item{cm_enabled}{Logical. Is the hero enabled in captain's mode?}
