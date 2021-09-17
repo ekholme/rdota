@@ -37,8 +37,10 @@ pull_player_final_items <- function(obj) {
   
   obj <- check_rdota_match(obj)
 
-  t <- purrr::map(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
-
-  dplyr::bind_rows(t)
+  # t <- purrr::map(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
+  # 
+  # dplyr::bind_rows(t)
+  
+  purrr::map_dfr(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
 
 }

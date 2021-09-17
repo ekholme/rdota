@@ -16,4 +16,18 @@ gather_player_match_identifiers <- function(obj, player_num) {
   
 }
 
-#TODO add a class check/coerce helper here
+#function to check if an object is an rdota match and coerce if not
+check_rdota_match <- function(x) {
+  
+  cl <- class(x)
+  
+  if (!("rdota_match" %in% cl | "match_tbl" %in% cl)) {
+    rlang::abort(paste0("`pull_player_final_items` expects an object of class 'rdota_match' or 'match_tbl', not ", cl))
+  }
+  
+  ret <- if ("rdota_match" %in% cl & (!"match_tbl" %in% cl)) {
+    tidy_rdota_match(x)
+  } else x
+  
+  ret
+}
