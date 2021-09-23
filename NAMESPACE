@@ -2,6 +2,7 @@
 
 S3method(print,rdota_match)
 export(get_match)
+export(get_parsed_matches)
 export(get_player_account_info)
 export(get_player_recent_matches)
 export(pull_player_final_items)
