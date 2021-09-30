@@ -1,36 +1,24 @@
+#' Core Get Response
+#' 
+#' This function powers the API requests in rdota. It's for internal purposes and shouldn't be called directly by the user.
+#'
+#' @param resource name of the resource to pass to the OpenDota API
+#' @param ... query arguments
+#'
+#' @importFrom magrittr %>%
+#'
+#' @return
+#' @export
+#'
+get_response <- function(resource, ...) {
+  
+  params <- list(...)
+  
+  httr2::request("https://api.opendota.com/api/") %>%
+    httr2::req_url_path_append(resource) %>%
+    httr2::req_url_query(!!!params) %>%
+    httr2::req_user_agent("http://github.com/ekholme/rdota") %>%
+    httr2::req_perform() %>%
+    httr2::resp_body_json()
 
-get_response <- function(url) {
-  
-  #check value of url
-  if (is.null(url) || !nzchar(url)) {
-    rlang::abort("The query url must not be blank")
-  }
-  
-  #set user agent
-  ua <- httr::user_agent("http://github.com/ekholme/rdota")
-  
-  #get response
-  resp <- httr::GET(url)
-  
-  #checking for status errors
-  httr::stop_for_status(resp)
-  
-  #ensure query returns json
-  if (httr::http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-  
-  #parse the content of the response
-  content <- httr::content(resp, as = "parsed", type = "application/json")
-  
-  structure(
-    list(
-      content = content,
-      url = url,
-      resp = resp
-    ),
-    class = "rdota"
-  )
-  
-  
 }
