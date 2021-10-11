@@ -4,12 +4,10 @@
 \alias{get_player_account_info}
 \title{Get Player Account Information}
 \usage{
-get_player_account_info(player_id, content_only = TRUE)
+get_player_account_info(player_id)
 }
 \arguments{
 \item{player_id}{Steam32 account id}
-
-\item{content_only}{logical. If TRUE, return only the content (i.e. the player account info) of the query. If FALSE, return an 'rdota' object with additional metadata}
 }
 \value{
 

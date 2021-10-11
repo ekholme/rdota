@@ -4,7 +4,7 @@
 \alias{get_match}
 \title{Get Match Data}
 \usage{
-get_match(match_id)
+get_match(match_id, tidy = TRUE)
 }
 \arguments{
 \item{match_id}{Match ID to query}

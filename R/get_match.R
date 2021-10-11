@@ -11,17 +11,21 @@
 #' @examples \dontrun{
 #' get_match('6019587919')
 #' }
-get_match <- function(match_id) {
+get_match <- function(match_id, tidy = TRUE) {
   
-  req_url <- sprintf('https://api.opendota.com/api/matches/%s/', match_id)
+  if (nchar(match_id) != 10) {
+    rlang::abort(paste0("`match_id` must be a valid 10-digit match id"))
+  }
   
-  out <- get_response(url = req_url)
+  resource <- sprintf("matches/%s", match_id)
   
-  #append the 'rdota_match' class to the object
-  class(out) <- append(class(out), "rdota_match")
-  
+  out <- get_response(resource = resource)
+
+out <- if (tidy == TRUE) {
+  tidy_match(out)
+} else out
+
   return(out)
-  
   
 }
 

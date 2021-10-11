@@ -30,20 +30,22 @@ get_parsed_matches <- function(less_than_match_id = NULL, simplify = TRUE) {
     rlang::abort('`simplify` must be either TRUE or FALSE')
   }
   
-  args <- list(less_than_match_id = less_than_match_id)
+  resource <- "parsedMatches"
   
-  req_url <- httr::parse_url("https://api.opendota.com/api/parsedMatches/")
-  
-  req_url$scheme <- 'https'
-  
-  req_url$query <- args
-  
-  req_url <- httr::build_url(req_url)
-  
-  ret <- get_response(req_url)
-  
-  if (simplify == TRUE) {
-    unlist(ret$content)
-  } else ret
+  # args <- list(less_than_match_id = less_than_match_id)
+  # 
+  # req_url <- httr::parse_url("https://api.opendota.com/api/parsedMatches/")
+  # 
+  # req_url$scheme <- 'https'
+  # 
+  # req_url$query <- args
+  # 
+  # req_url <- httr::build_url(req_url)
+  # 
+  # ret <- get_response(req_url)
+  # 
+  # if (simplify == TRUE) {
+  #   unlist(ret$content)
+  # } else ret
   
 }
