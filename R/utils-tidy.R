@@ -1,9 +1,8 @@
-##utility functions to tidy objects
 
-#tidy the result of get_match()
-tidy_match <- function(match_obj) {
+#internal function to tidy responses from api queries
+tidy_response <- function(resp, class_out) {
   
-  tmp <- purrr::modify_depth(match_obj, 1, replace_null)
+  tmp <- purrr::modify_depth(resp, 1, replace_null)
   
   ret <- tidyr::pivot_wider(tibble::enframe(tmp),
                             names_from = name,
@@ -11,8 +10,7 @@ tidy_match <- function(match_obj) {
   
   ret <- purrr::modify(ret, cond_unlist)
   
-  class(ret) <- append(class(ret), "rdota_match")
+  class(ret) <- append(class(ret), class_out)
   
   return(ret)
-  
 }

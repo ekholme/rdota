@@ -8,10 +8,12 @@
 #' @examples \dontrun{
 #' get_player_account_info('108887322')
 #' }
-get_player_account_info <- function(player_id) {
+get_player_account_info <- function(player_id, tidy = TRUE) {
   
   #check if player_id is too long & likely the 64-bit id
   check_player_id_len(player_id)
+  
+  check_tidy_arg(tidy)
   
   id <- if (is.numeric(player_id)) as.character(player_id)
   
@@ -19,16 +21,13 @@ get_player_account_info <- function(player_id) {
   
   tmp <- get_response(resource = resource)
   
-  tmp <- purrr::modify_depth(tmp, 1, replace_null)
+  out <- purrr::modify_depth(tmp, 1, replace_null)
   
-  ret <- tidyr::pivot_wider(tibble::enframe(tmp),
-                            names_from = name,
-                            values_from = value)
+  out <- if (tidy == TRUE) {
+    tidy_response(out, "rdota_player_account")
+  } else out
   
-  ret <- purrr::modify(ret, cond_unlist)
+  return(out)
   
-  class(ret) <- append(class(ret), "rdota_player_account")
-  
-  return(ret)
 }
 

@@ -37,6 +37,12 @@ check_player_id_len <- function(player_id) {
   
 }
 
+check_tidy_arg <- function(arg) {
+  if (!is.logical(arg)) {
+    rlang::abort(paste0("`tidy` must be a logical argument, not ", typeof(arg)))
+  }
+}
+
 #remove NULLs from list and make tibble
 compact_to_tibble <- function(x) {
   tibble::as_tibble(purrr::compact(x))
