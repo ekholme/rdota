@@ -34,7 +34,7 @@ get_indiv_player_kda <- function(obj, player_num) {
 #' }
 pull_player_kda <- function(obj) {
   
-  obj <- check_rdota_match(obj)
+  check_rdota_match(obj, "pull_player_kda")
   
   purrr::map_dfr(1:10, ~get_indiv_player_kda(obj = obj, player_num = .x))
   

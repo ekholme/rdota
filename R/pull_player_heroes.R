@@ -38,7 +38,7 @@ get_indiv_player_hero <- function(obj, player_num) {
 #' }
 pull_player_heroes <- function(obj, include_hero_names = TRUE) {
   
-  obj <- check_rdota_match(obj)
+  check_rdota_match(obj, "pull_player_heroes")
   
   tmp <- purrr::map_dfr(1:10, ~get_indiv_player_hero(obj = obj, player_num = .x))
   

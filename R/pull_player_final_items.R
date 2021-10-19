@@ -24,7 +24,7 @@ get_indiv_player_items <- function(obj, player_num) {
 #' 
 #' @description Pull the final items of all players in the match.
 #'
-#' @param obj An 'rdota_match' or 'match_tbl' object.
+#' @param obj An 'rdota_match' object.
 #'
 #' @return A tibble with 110 rows and 5 columns.
 #' @export
@@ -35,7 +35,7 @@ get_indiv_player_items <- function(obj, player_num) {
 #' }
 pull_player_final_items <- function(obj) {
   
-  obj <- check_rdota_match(obj)
+  check_rdota_match(obj, "pull_player_final_items")
 
   # t <- purrr::map(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
   # 
