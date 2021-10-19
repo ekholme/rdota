@@ -1,10 +1,9 @@
 
 #' Get Parsed Matches
 #' 
-#' @description Get a vector of random match ids from parsed matches.
+#' @description Get a vector of random match ids for parsed matches.
 #'
 #' @param less_than_match_id Optional. If set, will return matches with a match id lower than this value.
-#' @param simplify logical. If TRUE, will return the result as a numeric vector of match ids. If FALSE, will return raw the API response
 #'
 #' @return
 #' @export
@@ -26,26 +25,10 @@ get_parsed_matches <- function(less_than_match_id = NULL, simplify = TRUE) {
     rlang::abort(paste0("`less_than_match_id` must be NULL or a valid 10-digit match id"))
   }
   
-  if (!is.logical(simplify)) {
-    rlang::abort('`simplify` must be either TRUE or FALSE')
-  }
-  
   resource <- "parsedMatches"
   
-  # args <- list(less_than_match_id = less_than_match_id)
-  # 
-  # req_url <- httr::parse_url("https://api.opendota.com/api/parsedMatches/")
-  # 
-  # req_url$scheme <- 'https'
-  # 
-  # req_url$query <- args
-  # 
-  # req_url <- httr::build_url(req_url)
-  # 
-  # ret <- get_response(req_url)
-  # 
-  # if (simplify == TRUE) {
-  #   unlist(ret$content)
-  # } else ret
+  out <- get_response(resource = resource, less_than_match_id = less_than_match_id)
+  
+  unlist(out)
   
 }

@@ -4,7 +4,7 @@
 \alias{get_player_account_info}
 \title{Get Player Account Information}
 \usage{
-get_player_account_info(player_id)
+get_player_account_info(player_id, tidy = TRUE)
 }
 \arguments{
 \item{player_id}{Steam32 account id}

@@ -4,12 +4,12 @@
 \alias{get_player_recent_matches}
 \title{Get Player's Recent Matches}
 \usage{
-get_player_recent_matches(player_id, as_tibble = TRUE)
+get_player_recent_matches(player_id, tidy = TRUE)
 }
 \arguments{
 \item{player_id}{Steam32 account id}
 
-\item{as_tibble}{logical. If TRUE, will return the result as a tibble where each row is a match. If false, as an 'rdota' object with the .}
+\item{tidy}{logical. If TRUE, will return the result as a tibble where each row is a match. If false, will return the raw body of the response as a list.}
 }
 \value{
 

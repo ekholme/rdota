@@ -8,14 +8,12 @@ get_parsed_matches(less_than_match_id = NULL, simplify = TRUE)
 }
 \arguments{
 \item{less_than_match_id}{Optional. If set, will return matches with a match id lower than this value.}
-
-\item{simplify}{logical. If TRUE, will return the result as a numeric vector of match ids. If FALSE, will return raw the API response}
 }
 \value{
 
 }
 \description{
-Get a vector of random match ids from parsed matches.
+Get a vector of random match ids for parsed matches.
 }
 \examples{
 \dontrun{

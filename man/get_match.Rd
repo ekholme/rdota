@@ -8,6 +8,8 @@ get_match(match_id, tidy = TRUE)
 }
 \arguments{
 \item{match_id}{Match ID to query}
+
+\item{tidy}{logical. If TRUE (the default), will return a tidied tibble with class "rdota_match." If FALSE, will return the raw response body as a list.}
 }
 \value{
 
