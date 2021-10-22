@@ -4,7 +4,7 @@
 \alias{get_parsed_matches}
 \title{Get Parsed Matches}
 \usage{
-get_parsed_matches(less_than_match_id = NULL, simplify = TRUE)
+get_parsed_matches(less_than_match_id = NULL)
 }
 \arguments{
 \item{less_than_match_id}{Optional. If set, will return matches with a match id lower than this value.}

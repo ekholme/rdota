@@ -14,3 +14,16 @@ tidy_response <- function(resp, class_out) {
   
   return(ret)
 }
+
+#internal function to replace hero ids with hero names in get_public_match()
+replace_hero_ids <- function(df, var, idx) {
+  
+  h_vec <- rdota::heroes$localized_name
+  names(h_vec) <- heroes$id
+  
+  tmp <- as.character(df[idx, var])
+  tmp <- stringr::str_split_fixed(tmp, ",", 5)
+  
+  paste(h_vec[tmp], collapse = ", ")
+  
+}

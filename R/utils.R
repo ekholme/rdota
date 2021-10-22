@@ -55,6 +55,12 @@ replace_null <- function(x, replacement = NA_character_) {
   
 }
 
+check_logical_arg <- function(arg, arg_name) {
+
+  if (!is.logical(arg)) {
+    rlang::abort(paste0("`", arg_name, "` must be a logical argument, not ", typeof(arg)))
+  }
+}
 
 
 

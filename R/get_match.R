@@ -18,7 +18,8 @@ get_match <- function(match_id, tidy = TRUE) {
     rlang::abort(paste0("`match_id` must be a valid 10-digit match id"))
   }
   
-  check_tidy_arg(tidy)
+  #check_tidy_arg(tidy)
+  check_logical_arg(tidy)
   
   resource <- sprintf("matches/%s", match_id)
   

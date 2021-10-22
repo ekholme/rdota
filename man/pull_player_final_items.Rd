@@ -7,7 +7,7 @@
 pull_player_final_items(obj)
 }
 \arguments{
-\item{obj}{An 'rdota_match' or 'match_tbl' object.}
+\item{obj}{An 'rdota_match' object.}
 }
 \value{
 A tibble with 110 rows and 5 columns.

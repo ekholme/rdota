@@ -18,7 +18,7 @@
 get_parsed_matches <- function(less_than_match_id = NULL) {
   
   if (!is.null(less_than_match_id) && is.na(as.numeric(less_than_match_id))) {
-    rlang::abort("`less_than_match_id` must be numeric or coercible to numeric")
+    rlang::abort("`less_than_match_id` must be NULL, numeric, or coercible to numeric")
   }
   
   if (!is.null(less_than_match_id) && nchar(less_than_match_id) != 10) {
