@@ -8,7 +8,8 @@
 #' @param mmr_descending Optional. If TRUE, will order results by descending MMR. Cannot be TRUE if mmr_ascending is TRUE.
 #' @param use_hero_names Logical. If TRUE, will return hero names instead of IDs. If FALSE, will return hero IDs.
 #'
-#' @return a tibble containing a limited set of information about the match
+#' @return a tibble containing a limited set of information about the match. Passing match ids to \code{\link{get_match}}
+#' can provide more data about individual matches
 #' @export
 #'
 #' @examples \dontrun{

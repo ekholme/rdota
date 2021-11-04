@@ -21,7 +21,8 @@ get_public_matches(
 \item{use_hero_names}{Logical. If TRUE, will return hero names instead of IDs. If FALSE, will return hero IDs.}
 }
 \value{
-a tibble containing a limited set of information about the match
+a tibble containing a limited set of information about the match. Passing match ids to \code{\link{get_match}}
+can provide more data about individual matches
 }
 \description{
 Get a selection of randomly sampled public matches.
