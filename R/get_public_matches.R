@@ -33,7 +33,7 @@ get_public_matches <- function(less_than_match_id = NULL, mmr_ascending = NULL, 
     rlang::abort(paste0("`mmr_descending` must be NULL or TRUE"))
   }
   
-  if ((mmr_ascending == TRUE) & (mmr_descending == TRUE)) {
+  if (sum(mmr_ascending + mmr_descending) > 1) {
     rlang::abort(paste0("sort by either `mmr_ascending` or `mmr_descending`, not both"))
   }
   
@@ -44,9 +44,9 @@ get_public_matches <- function(less_than_match_id = NULL, mmr_ascending = NULL, 
   resp <- get_response(resource = resource, less_than_match_id = less_than_match_id, mmr_ascending = mmr_ascending,
                       mmr_descending = mmr_descending)
   
-  out <- map_dfr(1:length(resp), ~purrr::modify_depth(resp[.x], 1, ~replace_null(.x, NA_integer)))
+  out <- purrr::map_dfr(1:length(resp), ~purrr::modify_depth(resp[.x], 1, ~replace_null(.x, NA_integer)))
   
-  out2 <- if (use_hero_names == TRUE) {
+  out <- if (use_hero_names == TRUE) {
     
     out$radiant_team <- purrr::map_chr(1:length(resp), ~replace_hero_ids(out, "radiant_team", .x))
     out$dire_team <- purrr::map_chr(1:length(resp), ~replace_hero_ids(out, "dire_team", .x))
@@ -54,6 +54,8 @@ get_public_matches <- function(less_than_match_id = NULL, mmr_ascending = NULL, 
     out
 
   } else out
+  
+  return(out)
   
 }
 
