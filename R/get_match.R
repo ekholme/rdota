@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' get_match('6019587919')
+#' a <- get_match('6019587919')
 #' }
 get_match <- function(match_id, tidy = TRUE) {
   
@@ -19,7 +19,7 @@ get_match <- function(match_id, tidy = TRUE) {
   }
   
   #check_tidy_arg(tidy)
-  check_logical_arg(tidy)
+  check_logical_arg(tidy, "tidy")
   
   resource <- sprintf("matches/%s", match_id)
   
