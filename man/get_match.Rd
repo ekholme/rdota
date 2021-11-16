@@ -19,6 +19,6 @@ This function queries data for a given match. You can use it in conjunction with
 }
 \examples{
 \dontrun{
-get_match('6019587919')
+a <- get_match('6019587919')
 }
 }

@@ -7,7 +7,7 @@
 pull_player_heroes(obj, include_hero_names = TRUE)
 }
 \arguments{
-\item{obj}{An 'rdota_match' or 'match_tbl' object.}
+\item{obj}{An 'rdota_match' object.}
 
 \item{include_hero_names}{logical. If TRUE, will include a column with hero names as well as hero id. If FALSE, will only include hero id.}
 }

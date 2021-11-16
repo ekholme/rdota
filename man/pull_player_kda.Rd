@@ -7,7 +7,7 @@
 pull_player_kda(obj)
 }
 \arguments{
-\item{obj}{An 'rdota_match' or 'match_tbl' object.}
+\item{obj}{An 'rdota_match' object.}
 }
 \value{
 

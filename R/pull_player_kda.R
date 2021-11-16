@@ -23,7 +23,7 @@ get_indiv_player_kda <- function(obj, player_num) {
 #' 
 #' @description Pull the final kills-deaths-assists (KDA) scores for all players in a match.
 #'
-#' @param obj An 'rdota_match' or 'match_tbl' object.
+#' @param obj An 'rdota_match' object.
 #'
 #' @return
 #' @export

@@ -26,7 +26,7 @@ get_indiv_player_hero <- function(obj, player_num) {
 #' 
 #' @description Pull the hero ids/hero names for all players in a given match.
 #'
-#' @param obj An 'rdota_match' or 'match_tbl' object.
+#' @param obj An 'rdota_match' object.
 #' @param include_hero_names logical. If TRUE, will include a column with hero names as well as hero id. If FALSE, will only include hero id.
 #'
 #' @return A 10x5 tibble
