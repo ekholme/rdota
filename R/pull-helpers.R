@@ -26,3 +26,28 @@ check_rdota_match <- function(x, fn) {
   }
   
 }
+
+#helper to pull variables that change over time (gold, exp, etc)
+pull_time_var <- function(obj, player_num, var_in, name_out) {
+  
+  ids <- gather_player_match_identifiers(obj, player_num)
+  
+  tmp <- purrr::pluck(obj, "players", 1, player_num, var_in)
+  
+  time_sec <- 0:(length(tmp)-1)*60
+  
+  val <- unlist(tmp)
+  
+  out <- tibble::tibble(
+    match_id = ids$match_id,
+    account_id = ids$account_id,
+    player_slot = ids$player_slot,
+    time = time_sec,
+    val = val
+  )
+  
+  names(out)[5] <- name_out
+  
+  return(out)
+  
+}
