@@ -51,3 +51,14 @@ pull_time_var <- function(obj, player_num, var_in, name_out) {
   return(out)
   
 }
+
+#factory to produce similar pulling functions
+pull_time_var_factory <- function(check_msg, var_in, name_out) {
+  
+  function(obj) {
+    check_rdota_match(obj, check_msg)
+    
+    purrr::map_dfr(1:10, ~pull_time_var(obj = obj, player_num = .x, var_in = var_in, name_out = name_out))
+  }
+  
+}
