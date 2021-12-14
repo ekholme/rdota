@@ -4,9 +4,9 @@ gather_player_match_identifiers <- function(obj, player_num) {
   
   match_id <- obj$match_id
   
-  player_slot <- purrr::pluck(obj, "players", 1, player_num, "player_slot")
+  player_slot <- purrr::pluck(obj, "players", player_num, "player_slot")
   
-  account_id <- purrr::pluck(obj, "players", 1, player_num, "account_id")
+  account_id <- purrr::pluck(obj, "players", player_num, "account_id")
   
   account_id <- replace_null(account_id, NA_integer_)
   
@@ -25,6 +25,15 @@ check_rdota_match <- function(x, fn) {
     rlang::abort(paste0("`", fn, "` expects an object of class 'rdota_match', not ", cl))
   }
   
+}
+
+check_parsed_match <- function(x, fn) {
+  
+  cl <- class(x)
+  
+  if (cl != "parsed_match") {
+    rlang::abort(paste0("`", fn, "` expects an object of class 'parsed_match', not ", cl))
+  }
 }
 
 #helper to pull variables that change over time (gold, exp, etc)

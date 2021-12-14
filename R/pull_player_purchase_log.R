@@ -4,7 +4,7 @@ get_indiv_player_plog <- function(obj, player_num) {
   
   ids <- gather_player_match_identifiers(obj, player_num)
   
-  plog <- purrr::pluck(obj, "players", 1, player_num, "purchase_log")
+  plog <- purrr::pluck(obj, "players", player_num, "purchase_log")
   
   plog_tb <- tibble::tibble(
     match_id = ids$match_id,
@@ -34,7 +34,7 @@ get_indiv_player_plog <- function(obj, player_num) {
 #' }
 pull_player_purchase_logs <- function(obj) {
   
-  check_rdota_match(obj, "pull_player_purchase_logs")
+  check_parsed_match(obj, "pull_player_purchase_logs")
   
   purrr::map_dfr(1:10, ~get_indiv_player_plog(obj = obj, player_num = .x))
 }
