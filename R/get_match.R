@@ -12,24 +12,21 @@
 #' @examples \dontrun{
 #' a <- get_match('6019587919')
 #' }
-get_match <- function(match_id, tidy = TRUE) {
+get_match <- function(match_id) {
   
   if (nchar(match_id) != 10) {
     rlang::abort(paste0("`match_id` must be a valid 10-digit match id"))
   }
   
-  #check_tidy_arg(tidy)
-  check_logical_arg(tidy, "tidy")
-  
   resource <- sprintf("matches/%s", match_id)
   
   out <- get_response(resource = resource)
   
-  out <- if (tidy == TRUE) {
-    tidy_response(out, "rdota_match")
-  } else out
+  # out <- if (tidy == TRUE) {
+  #   tidy_response(out, "rdota_match")
+  # } else out
   
-  return(out)
+  new_match_class(out)
   
 }
-
+#list of length 43 is a parsed match; list of length 39 is an unparsed match

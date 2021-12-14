@@ -28,21 +28,6 @@ fetch_constants <- function(cons) {
     dplyr::mutate(dplyr::across(.cols = dplyr::everything(), ~cond_unlist(vec = .x)))
 }
 
-#function to check the length of player id
-check_player_id_len <- function(player_id) {
-  
-  if (nchar(player_id) > 11) {
-    rlang::abort(paste0("The `player_id` you've passed in has too many (", nchar(player_id), ") digits. Please be sure to use the Steam32 ID rather than the 64-bit ID"))
-  }
-  
-}
-
-check_tidy_arg <- function(arg) {
-  if (!is.logical(arg)) {
-    rlang::abort(paste0("`tidy` must be a logical argument, not ", typeof(arg)))
-  }
-}
-
 #remove NULLs from list and make tibble
 compact_to_tibble <- function(x) {
   tibble::as_tibble(purrr::compact(x))
@@ -55,12 +40,14 @@ replace_null <- function(x, replacement = NA_character_) {
   
 }
 
-check_logical_arg <- function(arg, arg_name) {
 
-  if (!is.logical(arg)) {
-    rlang::abort(paste0("`", arg_name, "` must be a logical argument, not ", typeof(arg)))
-  }
+#create classes for matches
+new_match_class <- function(obj) {
+  
+  i <- if (length(obj) == 43) {
+    "parsed_match"
+  } else "unparsed_match"
+  
+  structure(obj, class = i)
+  
 }
-
-
-
