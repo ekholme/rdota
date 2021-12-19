@@ -30,6 +30,8 @@ pull_player_heroes <- function(obj, include_hero_names = TRUE) {
   
   check_parsed_match(obj, "pull_player_heroes")
   
+  check_logical_arg(include_hero_names, "include_hero_names")
+  
   tmp <- purrr::map_dfr(1:10, ~get_indiv_player_hero(obj = obj, player_num = .x))
   
   if (include_hero_names == TRUE) {

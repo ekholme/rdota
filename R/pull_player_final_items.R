@@ -25,18 +25,27 @@ get_indiv_player_items <- function(obj, player_num) {
 #' @description Pull the final items of all players in the match.
 #'
 #' @param obj A 'parsed_match'  object.
+#' @param include_item_names logical. If TRUE, the output will include a column containing item names in addition to a column containing item ids. If FALSE, will include only item ids.
 #'
-#' @return A tibble with 110 rows and 5 columns.
+#' @return A tibble with 110 rows and 5 or 6 columns, depending on the value of the include_item_names argument.
 #' @export
 #'
 #' @examples \dontrun{
 #' a <- get_match('6156757097')
 #' b <- pull_player_final_items(a)
 #' }
-pull_player_final_items <- function(obj) {
+pull_player_final_items <- function(obj, include_item_names = TRUE) {
   
   check_parsed_match(obj, "pull_player_final_items")
   
-  purrr::map_dfr(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
+  check_logical_arg(include_item_names, "include_item_names")
+  
+  tmp <- purrr::map_dfr(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
+  
+  if (include_item_names == TRUE) {
+    
+    dplyr::left_join(tmp, rdota::item_ids, by = c("item" = "item_id"))
+    
+  } else tmp
 
 }

@@ -61,7 +61,7 @@ item_id_cont <- GET(paste0(url, "item_ids")) %>%
   content(as = "parsed", type = "application/json")
 
 item_ids <- tibble(
-  item_id = names(item_id_cont),
+  item_id = as.integer(names(item_id_cont)),
   item_name = as.character(item_id_cont)
 )
 
