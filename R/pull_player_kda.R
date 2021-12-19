@@ -6,7 +6,7 @@ get_indiv_player_kda <- function(obj, player_num) {
   
   keys <- c("kills", "deaths", "assists")
   
-  o <- purrr::map(keys, ~purrr::pluck(obj, "players", 1, player_num, .x))
+  o <- purrr::map(keys, ~purrr::pluck(obj, "players", player_num, .x))
   
   tmp <- tibble::tibble(
     match_id = ids$match_id,
@@ -23,7 +23,7 @@ get_indiv_player_kda <- function(obj, player_num) {
 #' 
 #' @description Pull the final kills-deaths-assists (KDA) scores for all players in a match.
 #'
-#' @param obj An 'rdota_match' object.
+#' @param obj A 'parsed_match' object.
 #'
 #' @return
 #' @export
@@ -34,7 +34,7 @@ get_indiv_player_kda <- function(obj, player_num) {
 #' }
 pull_player_kda <- function(obj) {
   
-  check_rdota_match(obj, "pull_player_kda")
+  check_parsed_match(obj, "pull_player_kda")
   
   purrr::map_dfr(1:10, ~get_indiv_player_kda(obj = obj, player_num = .x))
   

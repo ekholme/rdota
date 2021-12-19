@@ -41,7 +41,7 @@ pull_time_var <- function(obj, player_num, var_in, name_out) {
   
   ids <- gather_player_match_identifiers(obj, player_num)
   
-  tmp <- purrr::pluck(obj, "players", 1, player_num, var_in)
+  tmp <- purrr::pluck(obj, "players", player_num, var_in)
   
   time_sec <- 0:(length(tmp)-1)*60
   
@@ -65,7 +65,7 @@ pull_time_var <- function(obj, player_num, var_in, name_out) {
 pull_time_var_factory <- function(check_msg, var_in, name_out) {
   
   function(obj) {
-    check_rdota_match(obj, check_msg)
+    check_parsed_match(obj, check_msg)
     
     purrr::map_dfr(1:10, ~pull_time_var(obj = obj, player_num = .x, var_in = var_in, name_out = name_out))
   }

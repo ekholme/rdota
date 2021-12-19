@@ -7,7 +7,7 @@ get_indiv_player_items <- function(obj, player_num) {
 
   ind <- c(paste0("item_", 0:5), "item_neutral", paste0("backpack_", 0:3))
 
-  o <- purrr::map(ind, ~purrr::pluck(obj, "players", 1, player_num, .x))
+  o <- purrr::map(ind, ~purrr::pluck(obj, "players", player_num, .x))
 
   tibble::tibble(
     match_id = ids$match_id,
@@ -24,7 +24,7 @@ get_indiv_player_items <- function(obj, player_num) {
 #' 
 #' @description Pull the final items of all players in the match.
 #'
-#' @param obj An 'rdota_match' object.
+#' @param obj A 'parsed_match'  object.
 #'
 #' @return A tibble with 110 rows and 5 columns.
 #' @export
@@ -35,11 +35,7 @@ get_indiv_player_items <- function(obj, player_num) {
 #' }
 pull_player_final_items <- function(obj) {
   
-  check_rdota_match(obj, "pull_player_final_items")
-
-  # t <- purrr::map(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
-  # 
-  # dplyr::bind_rows(t)
+  check_parsed_match(obj, "pull_player_final_items")
   
   purrr::map_dfr(1:10, ~get_indiv_player_items(obj = obj, player_num = .x))
 
