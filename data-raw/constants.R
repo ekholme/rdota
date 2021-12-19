@@ -62,7 +62,7 @@ item_id_cont <- GET(paste0(url, "item_ids")) %>%
 
 item_ids <- tibble(
   item_id = names(item_id_cont),
-  item_name = item_id_cont
+  item_name = as.character(item_id_cont)
 )
 
 usethis::use_data(item_ids, overwrite = TRUE)
