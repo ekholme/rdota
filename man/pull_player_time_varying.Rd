@@ -2,9 +2,18 @@
 % Please edit documentation in R/pull_time_varying.R
 \name{pull_player_deny_progression}
 \alias{pull_player_deny_progression}
+\alias{pull_player_last_hit_progression}
+\alias{pull_player_xp_progression}
+\alias{pull_player_gold_progression}
 \title{Pull Time Varying Player Variables}
 \usage{
 pull_player_deny_progression(obj)
+
+pull_player_last_hit_progression(obj)
+
+pull_player_xp_progression(obj)
+
+pull_player_gold_progression(obj)
 }
 \arguments{
 \item{obj}{A 'parsed_match' object.}

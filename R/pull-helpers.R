@@ -17,15 +17,16 @@ gather_player_match_identifiers <- function(obj, player_num) {
 }
 
 #function to check if an object is an rdota match and coerce if not
-check_rdota_match <- function(x, fn) {
-  
-  cl <- class(x)
-  
-  if (!("rdota_match") %in% cl) {
-    rlang::abort(paste0("`", fn, "` expects an object of class 'rdota_match', not ", cl))
-  }
-  
-}
+#I think this is superfluous now
+# check_rdota_match <- function(x, fn) {
+#   
+#   cl <- class(x)
+#   
+#   if (!("rdota_match") %in% cl) {
+#     rlang::abort(paste0("`", fn, "` expects an object of class 'rdota_match', not ", cl))
+#   }
+#   
+# }
 
 check_parsed_match <- function(x, fn) {
   
