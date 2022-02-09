@@ -13,10 +13,6 @@ indiv_player_ability_upgrades <- function(obj, player_num) {
     ability_id = as.character(abs)
   )
   
-  #tmp$level <- seq_along(abs)
-  
-  #tmp$ability_id <- as.character(abs)
-  
   tmp <- dplyr::left_join(tmp, rdota::ability_ids, by = "ability_id")
   
   tmp$ability_name <- as.character(tmp$ability_name)
@@ -37,7 +33,7 @@ indiv_player_ability_upgrades <- function(obj, player_num) {
 #' @examples \dontrun{
 #' #note that this will only work with a parsed match
 #' a <- get_match('6183712050')
-#' b <- pull_player_heroes(a)
+#' b <- pull_player_ability_upgrades(a)
 #' }
 pull_player_ability_upgrades <- function(obj) {
   
