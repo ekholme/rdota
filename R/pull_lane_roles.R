@@ -36,7 +36,7 @@ pull_lane_roles <- function(obj) {
   
   tmp <- purrr::map_dfr(1:10, ~get_indiv_player_lanerole(obj = obj, player_num = .x))
   
-  gold <- pull_player_gold_progression(aa)
+  gold <- pull_player_gold_progression(obj)
   
   ret <- if (max(gold$time, na.rm = TRUE) < 600) {
     cat("Game did not last long enough to determine player roles (i.e. support/core). Only returning lane position")
