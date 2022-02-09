@@ -24,4 +24,24 @@ indiv_player_ability_upgrades <- function(obj, player_num) {
   tmp
 }
 
-#RESUME HERE WITH ITERATION AND DOCUMENTATION
+
+#' Pull Player Ability Upgrades
+#' 
+#' @description Pull the ability upgrades chosen for each hero at each level in a match
+#'
+#' @param obj A 'parsed_match' object
+#'
+#' @return
+#' @export
+#'
+#' @examples \dontrun{
+#' #note that this will only work with a parsed match
+#' a <- get_match('6183712050')
+#' b <- pull_player_heroes(a)
+#' }
+pull_player_ability_upgrades <- function(obj) {
+  
+  check_parsed_match(obj, "pull_player_ability_upgrades")
+  
+  purrr::map_dfr(1:10, ~indiv_player_ability_upgrades(obj = obj, player_num = .x))
+}
