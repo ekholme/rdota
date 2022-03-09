@@ -5,8 +5,8 @@ extract_ycount <- function(obj, player_num, x, ids) {
         match_id = ids$match_id,
         account_id = ids$account_id,
         player_slot = ids$player_slot,
-        x = x,
-        y = names(yc),
+        x = as.integer(x),
+        y = as.integer(names(yc)),
         n = as.integer(yc)
     )
 
@@ -23,7 +23,7 @@ indiv_player_xy <- function(obj, player_num) {
 
 #' Pull Player Locations
 #' 
-#' @description Pull the x/y locations of each player throughout the match
+#' @description Pull the x/y locations of each player throughout the first 11 minutes of the match.
 #'
 #' @param obj A 'parsed_match'
 #'
